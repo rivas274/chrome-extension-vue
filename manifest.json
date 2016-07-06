@@ -1,0 +1,43 @@
+{
+  "name" : "__MSG_name__",
+  "version" : "0.1",
+  "manifest_version" : 2,
+  "description" : "__MSG_description__",
+  "default_locale" : "es",
+  "icons" : {
+    "16" : "img/dev.png",
+    "32" : "img/dev.png"
+  },
+  "browser_action" : {
+    "default_icon" : "img/dev.png",
+    "default_title" : "__MSG_title__",
+    "default_popup" : "src/popup.html"
+  },
+  "background" : {
+    "persistent" : true,
+    "page":"src/background.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "minimum_chrome_version" : "30.0",
+  "options_page" : "src/options.html",
+  "permissions" : [
+    "file://*",
+    "https://*/*",
+    "http://*/*",
+    "unlimited_storage",
+    "contextMenus",
+    "notifications",
+    "webRequestBlocking",
+    "bookmarks",
+    "storage",
+    "tabs"
+  ],
+  "web_accessible_resources" : [
+    "css/bootstrap.min.css",
+    "css/popup.css",
+    "js/i18n.js",
+    "js/vue.js",
+    "js/popup.js",
+    "js/background.js"
+  ]
+}

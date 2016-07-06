@@ -1,0 +1,20 @@
+﻿{
+  // manifest 
+  "description": {
+    "message": "Descripcion",
+    "description": "APP para Notificar Descanso"
+  },
+  "name": {
+    "message": "nombre",
+    "description": "APP Descanso"
+  },
+  "title": {
+    "message": "titulo",
+    "description": "menu Descripcion"
+  },
+  //popup
+  "titulo_menu": {
+    "message": "menu",
+    "description": "menu Descripcion"
+  }
+}

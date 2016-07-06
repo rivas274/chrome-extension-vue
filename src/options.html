@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recordatorio</title>
+    <link href="../css/popup.css" rel="stylesheet" type="text/css" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/i18n.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <h4>Agregar  <small>Personas</small></h4>
+                <input type="text" class="form-control" v-model="nombre">
+                <input type="submit" class="btn btn-primario" @click="cronometro()" v-if="nombre">
+                <ul>
+                    <li>{{tiempo.hora}}</li>
+                    <li>{{tiempo.minuto}}</li>
+                    <li>{{tiempo.segundo}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <pre>
+                    {{ $data | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+    <script src="../js/options.js"></script>
+</body>
+</html>
