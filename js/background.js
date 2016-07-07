@@ -8,4 +8,18 @@ chrome.browserAction.setBadgeBackgroundColor(BADGE_INACTIVE);
         popup: "tracking.html"
     });*/
     localStorage.ini="hugo";
-    alert(localStorage.ini);
+function enviar_notificacion(){
+alert();
+}
+chrome.notifications.create(
+    'name-for-notification',{   
+    type: 'basic', 
+    iconUrl: '../img/add.png', 
+    title: "This is a notification", 
+    message: "hello there!" 
+    },
+
+function(id) {
+} 
+
+);
