@@ -1,4 +1,4 @@
-new Vue({
+var option=new Vue({
     el:".container-fluid",
     data:{
 		tiempo:{
@@ -16,6 +16,7 @@ new Vue({
 			m=(s <= 59) ? m : (m+1);
 			s=(s <= 59) ? (s+1) : 0;
 			this.tiempo = { hora: h , minuto: m, segundo: s};
+			
 			if(this.tiempo.minuto<2){
 				setTimeout(function(){
 					this.cronometro();
@@ -29,3 +30,4 @@ new Vue({
     ready: function () {
 	}
 });
+

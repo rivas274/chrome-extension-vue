@@ -38,6 +38,7 @@
     "js/i18n.js",
     "js/vue.js",
     "js/popup.js",
-    "js/background.js"
+    "js/background.js",
+    "img/add.png"
   ]
 }

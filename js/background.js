@@ -1,22 +1,11 @@
-var storage = chrome.storage.local;
-var myTestVar = 'myVariableKeyName';
-
-storage.set({myTestVar:'my test var'});
-
-storage.get(myTestVar,function(result){
-    console.log(myTestVar,result);
-    //console output = myVariableKeyName {}
-});
-storage.get('myTestVar',function(result){
-    console.log(result);
-    //console output = {myTestVar:'my test var'}
-});
-(function() {
-    "use strict";
-    chrome.runtime.sendMessage({action: "pagematchurls", url: window.location.href }, function(response) {
-        if(response.isOk) {
-            removeBanner();
-            initPage();
-        }
-    });
-})();
+var BADGE_ACTIVE = {color:[204,0,51,255]};
+var BADGE_LOADING = {color:[204,204,51,255]};
+var BADGE_INACTIVE = {color:[153,153,153,255]};
+chrome.browserAction.setIcon({path:'img/add.png'});
+chrome.browserAction.setBadgeText({text: '66'});
+chrome.browserAction.setBadgeBackgroundColor(BADGE_INACTIVE);
+/*chrome.browserAction.setPopup({
+        popup: "tracking.html"
+    });*/
+    localStorage.ini="hugo";
+    alert(localStorage.ini);
