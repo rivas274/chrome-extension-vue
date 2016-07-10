@@ -18,22 +18,24 @@
 <body>
     <template id="cronometro">
         <div class="form-inline">
-            <input  type="button" 
-                    class="btn btn-primario" 
-                    @click="borrarhijo()"
-                    value='-'>
-            <div v-if="!contador.contar" class="form-group">
-                <input  type="text" 
+            <div class="form-group">
+                <input  type="button" 
+                        class="btn btn-primario" 
+                        @click="borrarhijo()"
+                        value='-'>
+                <input  v-if="labelInput" type="text" 
                         class="form-control time" 
                         v-model="contador.hora">
-                <input  type="button" 
+                <div    v-else 
+                        class="form-control time">{{contador.hora}}</div>
+                
+                <input  v-if="!contador.contar"
+                        type="button" 
                         class="btn btn-primario" 
                         @click="temporizador()"
                         value="Comenzar">
-            </div>
-            <div v-else="!contador.contar" class="form-group">
-                <div class="form-control time">{{contador.hora}}</div>
-                <input  type="button" 
+                <input  v-else
+                        type="button" 
                         class="btn btn-primario" 
                         @click="contador.contar=false"
                         value="Detener">

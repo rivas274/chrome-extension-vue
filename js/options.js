@@ -8,31 +8,45 @@ Vue.component('cronometro',{
 	},
 	methods: {
 		temporizador: function () {
-			this.contador.time=moment(this.contador.hora, "H[h]:mm[m]:ss[s]");
+			this.contador.time=moment(this.contador.hora, "HH:mm:ss");
 			if(!this.contador.contar){
-				this.cronometro();
 				this.contador.contar=true;
+				this.cronometro();
 			}
 		},
 		cronometro: function () {
 			setTimeout(function(){
-				time=moment(this.contador.time).subtract(1, 's');
-			/*	time=moment(this.contador.time).add(1, 's');*/
-				this.contador.time=time;
-				this.contador.hora=moment(time).format('HH:mm:ss');
+				timeOrigin=moment(this.contador.time);
 				if(this.contador.contar){
+					if(this.contador.tipo=='+')
+						time=timeOrigin.add(1, 's');
+					if(this.contador.tipo=='-'&& this.temporizadorValido()){
+						time=timeOrigin.subtract(1, 's');
+					}
+					this.contador.time=time;
+					this.contador.hora=moment(time).format('HH:mm:ss');
 					this.cronometro();
 				}
 			}.bind(this), 1000);
+		},
+		temporizadorValido:function () {
+			valid=(moment(this.contador.time).diff(moment('00:00:00',"HH:mm:ss"),'HH:mm:ss')>0);
+			if(valid)return true;
+			this.detener();
+			return false;
+			
 		},
 		detener: function () {
 			this.contador.contar=false;
 		},
 		borrarhijo() {
-			/*this.$dispatch(this.contador);*/
-			console.log(this.contador);
             this.$parent.borrar(this.contador);
         }
+	},
+  	computed: {
+		labelInput:function () {
+			return (this.contador.contar) ? true : (this.contador.tipo== "-");
+		},
 	},
 })
 var option=new Vue({
@@ -40,7 +54,7 @@ var option=new Vue({
     data:{
 		contador_new:{
 				hora:"00:00:00",
-				time:0,
+				time:"00:00:00",
 				contar:false,
 				tipo:'+'
 			},
@@ -54,7 +68,7 @@ var option=new Vue({
 		limpiar: function () {
 			this.contador_new={
 				hora:"00:00:00",
-				time:0,
+				time:"00:00:00",
 				contar:false,
 				tipo:'+'
 			}
@@ -69,4 +83,3 @@ var option=new Vue({
 	ready: function () {
 	}
 });
-
