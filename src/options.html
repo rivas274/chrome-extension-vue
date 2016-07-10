@@ -9,21 +9,36 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/moment.js"></script>
     <script src="../js/vue.js"></script>
+    <style>
+        .time{
+            width:6em !important;
+        }
+    </style>
 </head>
 <body>
     <template id="cronometro">
-        <form class="form-inline" @submit.prevent>
-            <input type="text" class="form-control" v-model="contador.hora">
-            <input  type="button" 
-                    class="btn btn-primario" 
-                    @click="temporizador()" 
-                    v-if="contador.hora"
-                    value=Comenzar>
+        <div class="form-inline">
             <input  type="button" 
                     class="btn btn-primario" 
                     @click="borrarhijo()"
                     value='-'>
-        </form>
+            <div v-if="!contador.contar" class="form-group">
+                <input  type="text" 
+                        class="form-control time" 
+                        v-model="contador.hora">
+                <input  type="button" 
+                        class="btn btn-primario" 
+                        @click="temporizador()"
+                        value="Comenzar">
+            </div>
+            <div v-else="!contador.contar" class="form-group">
+                <div class="form-control time">{{contador.hora}}</div>
+                <input  type="button" 
+                        class="btn btn-primario" 
+                        @click="contador.contar=false"
+                        value="Detener">
+            </div>
+        </div>
     </template>
     <div class="container-fluid">
         <div class="row">

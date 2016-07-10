@@ -1,6 +1,11 @@
 Vue.component('cronometro',{
 	template:"#cronometro",
-	props: {'contador':{}},
+	props: {
+		'contador':{
+			type: Object,
+			required: true
+		}
+	},
 	methods: {
 		temporizador: function () {
 			this.contador.time=moment(this.contador.hora, "H[h]:mm[m]:ss[s]");
