@@ -1,33 +1,29 @@
 var option=new Vue({
     el:".container-fluid",
     data:{
-		tiempo:{
-			hora: 0,
-			minuto: 0,
-			segundo: 0
-    	},
+		contador:{hora:"00:00:00",time:0,contar:false},
     },
     methods: {
-		cronometro: function () {
-			var h= this.tiempo.hora;
-			var m= this.tiempo.minuto;
-			var s= this.tiempo.segundo;
-			h=(m <= 59) ? h : (h+1);
-			m=(s <= 59) ? m : (m+1);
-			s=(s <= 59) ? (s+1) : 0;
-			this.tiempo = { hora: h , minuto: m, segundo: s};
-			
-			if(this.tiempo.minuto<2){
-				setTimeout(function(){
-					this.cronometro();
-				}.bind(this), 1000);
+		temporizador: function () {
+			this.contador.time=moment(this.contador.hora, "H[h]:mm[m]:ss[s]");
+			if(!this.contador.contar){
+				this.cronometro();
+				this.contador.contar=true;
 			}
 		},
+		cronometro: function () {
+			setTimeout(function(){
+				time=moment(this.contador.time).subtract(1, 's');
+			/*	time=moment(this.contador.time).add(1, 's');*/
+				this.contador.time=time;
+				this.contador.hora=moment(time).format('HH:mm:ss');
+				this.cronometro();
+			}.bind(this), 1000);
+		}
 	},
-    computed: {
-		
+  	computed: {
 	},
-    ready: function () {
+	ready: function () {
 	}
 });
 

@@ -36,6 +36,7 @@
     "css/bootstrap.min.css",
     "css/popup.css",
     "js/i18n.js",
+    "js/moment.js",
     "js/vue.js",
     "js/popup.js",
     "js/background.js",
